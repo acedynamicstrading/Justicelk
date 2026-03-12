@@ -1508,13 +1508,57 @@ function showTab(tab) {
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxB73xY0UCYSNHxU5HX7LXboC96XWgJO0jIlUQPu9PnDyHtbMNGfMVmcUUdkpkj4eHm/exec';
 const APP_SECRET = 'gamatausaviya2025';
 
-async function callSheets(payload) {
-  const params = new URLSearchParams({ ...payload, secret: APP_SECRET });
-  const res = await fetch(SHEETS_URL + '?' + params.toString(), {
-    method: 'GET',
-    redirect: 'follow'
+// ── Google Sheets API via JSONP (bypasses CORS) ──
+function callSheets(payload) {
+  return new Promise((resolve, reject) => {
+    const cbName = 'gu_cb_' + Date.now() + '_' + Math.floor(Math.random()*10000);
+    const timeout = setTimeout(() => {
+      delete window[cbName];
+      const script = document.getElementById(cbName);
+      if (script) script.remove();
+      reject(new Error('Request timed out — check internet connection'));
+    }, 15000);
+
+    window[cbName] = function(data) {
+      clearTimeout(timeout);
+      delete window[cbName];
+      const script = document.getElementById(cbName);
+      if (script) script.remove();
+      resolve(data);
+    };
+
+    const params = new URLSearchParams({
+      ...payload,
+      secret:   APP_SECRET,
+      callback: cbName
+    });
+
+    // For large file uploads use fetch POST instead of JSONP
+    if (payload.action === 'uploadFile' && payload.base64data) {
+      clearTimeout(timeout);
+      delete window[cbName];
+      fetch(SHEETS_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...payload, secret: APP_SECRET })
+      })
+      .then(r => r.json())
+      .then(resolve)
+      .catch(reject);
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id  = cbName;
+    script.src = SHEETS_URL + '?' + params.toString();
+    script.onerror = () => {
+      clearTimeout(timeout);
+      delete window[cbName];
+      script.remove();
+      reject(new Error('Script load failed'));
+    };
+    document.head.appendChild(script);
   });
-  return await res.json();
 }
 
 function switchLoginTab(t) {
