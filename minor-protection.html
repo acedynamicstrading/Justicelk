@@ -53,7 +53,6 @@
   }
   .hero::before {
     content: ''; position: absolute; inset: 0;
-    pointer-events: none;
     background: radial-gradient(circle at 30% 50%, rgba(18,168,155,0.12) 0%, transparent 60%),
                 radial-gradient(circle at 70% 50%, rgba(212,168,67,0.08) 0%, transparent 60%);
   }
@@ -121,9 +120,9 @@
   }
   .cat-card:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(18,168,155,0.12); }
   .cat-card.selected { border-color: var(--teal); background: rgba(18,168,155,0.06); }
-  .cat-icon { font-size: 2rem; margin-bottom: 10px; display: block; pointer-events: none; }
-  .cat-title { font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 4px; pointer-events: none; }
-  .cat-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; pointer-events: none; }
+  .cat-icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+  .cat-title { font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 4px; }
+  .cat-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
 
   /* ── TEXTAREA ── */
   .situation-box {
@@ -226,16 +225,15 @@
 
   /* ── STEP PANELS ── */
   .step-panel { display: none; }
-  .step-panel.active { display: block; padding-bottom: 100px; }
+  .step-panel.active { display: block; }
 
   /* ── SAFE EXIT ── */
   .safe-exit-bar {
     position: fixed; bottom: 0; left: 0; right: 0;
     background: rgba(13,27,42,0.95); padding: 10px 20px;
     display: flex; align-items: center; justify-content: space-between;
-    z-index: 50; backdrop-filter: blur(8px);
+    z-index: 100; backdrop-filter: blur(8px);
     border-top: 2px solid var(--gold);
-    height: 56px;
   }
   .safe-exit-bar span { color: rgba(255,255,255,0.7); font-size: 0.8rem; }
   .safe-exit-btn {
@@ -305,7 +303,7 @@
 
 <!-- TOP HEADER -->
 <header class="top-header">
-  <a href="https://acedynamicstrading.github.io/justicekids/" class="logo">
+  <a href="index.html" class="logo">
     ⚖ <span>Justice LK</span> &nbsp;|&nbsp; Safe Help
   </a>
   <button class="emergency-btn" onclick="showEmergency()">🆘 Emergency Help</button>
@@ -315,10 +313,10 @@
 <!-- MOBILE DRAWER -->
 <div class="ham-drawer" id="ham-drawer">
   <button class="ham-close" onclick="toggleHamMenu()">✕</button>
-  <a href="https://acedynamicstrading.github.io/justicelk/" onclick="toggleHamMenu()">🏠 Platform Home</a>
-  <a href="https://acedynamicstrading.github.io/justicekids/" onclick="toggleHamMenu()">⚖ Justice LK CMS</a>
-  <a href="https://acedynamicstrading.github.io/justicekids/" target="_blank" onclick="toggleHamMenu()">👶 Justice Kids</a>
-  <a href="https://acedynamicstrading.github.io/justicelk/lawyer-registration.html" target="_blank" onclick="toggleHamMenu()">👨‍⚖️ Attorney Registration</a>
+  <a href="about.html" onclick="toggleHamMenu()">🏠 Platform Home</a>
+  <a href="index.html" onclick="toggleHamMenu()">⚖ Justice LK CMS</a>
+  <a href="kids.html" onclick="toggleHamMenu()">👶 Justice Kids</a>
+  <a href="lawyer-registration.html" onclick="toggleHamMenu()">👨‍⚖️ Attorney Registration</a>
   <button onclick="showEmergency();toggleHamMenu()" class="ham-cta" style="background:#e74c3c;">🆘 Emergency Help</button>
 </div>
 
@@ -556,13 +554,13 @@
       <div style="font-size:2.5rem;margin-bottom:12px;">👨‍⚖️</div>
       <div class="card-title" style="color:#fff;justify-content:center;" data-en="Want to Talk to a Real Lawyer?" data-si="සැබෑ නීතිඥයෙකු සමඟ කතා කිරීමට අවශ්‍යද?" data-ta="உண்மையான வழக்கறிஞரிடம் பேச விரும்புகிறீர்களா?">Want to Talk to a Real Lawyer?</div>
       <p style="color:rgba(255,255,255,0.85);font-size:0.95rem;margin:10px 0 22px;line-height:1.6;" data-en="LexLK offers free legal consultations for children and families in Sri Lanka. A trusted adult can book on your behalf — completely free." data-si="LexLK ශ්‍රී ලංකාවේ ළමුන් සහ පවුල් සඳහා නොමිලේ නීති උපදේශනයක් ලබා දෙයි." data-ta="LexLK இலங்கையில் குழந்தைகள் மற்றும் குடும்பங்களுக்கு இலவச சட்ட ஆலோசனை வழங்குகிறது.">LexLK offers free legal consultations for children and families in Sri Lanka. A trusted adult can book on your behalf — completely free.</p>
-      <a href="https://acedynamicstrading.github.io/Lexlk/" target="_blank" style="display:inline-block;background:#D4A843;color:#0D1B2A;padding:14px 36px;border-radius:99px;font-weight:900;font-size:0.95rem;text-decoration:none;">📅 Book a Free Consultation at LexLK</a>
-      <p style="color:rgba(255,255,255,0.45);font-size:0.78rem;margin-top:12px;">acedynamicstrading.github.io/Lexlk · +94 77 362 2211</p>
+      <a href="https://lexlk.com" target="_blank" style="display:inline-block;background:#D4A843;color:#0D1B2A;padding:14px 36px;border-radius:99px;font-weight:900;font-size:0.95rem;text-decoration:none;">📅 Book a Free Consultation at LexLK</a>
+      <p style="color:rgba(255,255,255,0.45);font-size:0.78rem;margin-top:12px;">lexlk.com · +94 77 362 2211</p>
     </div>
 
     <div class="btn-row">
       <button class="btn btn-gold" onclick="startOver()">Start a new question</button>
-      <a href="https://acedynamicstrading.github.io/justicekids/" target="_blank" class="btn btn-outline">Justice Kids — Learn your rights →</a>
+      <a href="kids.html" class="btn btn-outline">Justice Kids — Learn your rights →</a>
       <button class="btn btn-outline" onclick="printGuidance()">🖨 Print this guidance</button>
     </div>
   </div>
@@ -577,10 +575,10 @@
 
 <footer style="background:#0D1B2A;padding:20px 24px;text-align:center;font-size:0.82rem;color:rgba(255,255,255,0.45);">
   <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:8px;">
-    <a href="https://acedynamicstrading.github.io/justicelk/" style="color:rgba(255,255,255,0.6);text-decoration:none;">🏠 Platform Home</a>
-    <a href="https://acedynamicstrading.github.io/justicekids/" style="color:rgba(255,255,255,0.6);text-decoration:none;">Justice LK CMS</a>
-    <a href="https://acedynamicstrading.github.io/justicekids/" target="_blank" style="color:rgba(255,255,255,0.6);text-decoration:none;">Justice Kids</a>
-    <a href="https://acedynamicstrading.github.io/justicelk/lawyer-registration.html" target="_blank" style="color:rgba(255,255,255,0.6);text-decoration:none;">Attorney Registration</a>
+    <a href="about.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">🏠 Platform Home</a>
+    <a href="index.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">Justice LK CMS</a>
+    <a href="kids.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">Justice Kids</a>
+    <a href="lawyer-registration.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">Attorney Registration</a>
   </div>
   © 2026 Justice LK · National Digital Justice Access Programme · Protected by client confidentiality
 </footer>
@@ -661,17 +659,6 @@ function selectCat(el, cat) {
   selectedCategory = cat;
   document.getElementById('step1-next').disabled = false;
 }
-
-// Also handle via event delegation as fallback
-document.addEventListener('DOMContentLoaded', function() {
-  document.getElementById('cat-grid').addEventListener('click', function(e) {
-    const card = e.target.closest('.cat-card');
-    if (card) {
-      const cat = card.getAttribute('onclick').match(/'([^']+)'\)/)[1];
-      selectCat(card, cat);
-    }
-  });
-});
 
 // ── SAFETY ──
 function setSafe(val, btn) {
