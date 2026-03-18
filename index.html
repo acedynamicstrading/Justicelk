@@ -2378,12 +2378,12 @@ function saveSettings() { closeSettings(); }
 
 
 // ── AI CALL — routes through LexLK Cloudflare Worker ──
-async function callAI(prompt) {
+async function callAI(prompt, action) {
   const resp = await fetch('https://lexlk.acedynamicstrading.workers.dev', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      action: 'ask',
+      action: action || 'ask',
       messages: [{ role: 'user', content: prompt }]
     })
   });
@@ -2579,7 +2579,7 @@ Signed: _________________ Date: ${c.created}
 Petitioner / Petitioner's Officer`;
 
   try {
-    const text = await callAI(prompt);
+    const text = await callAI(prompt, 'petition');
     currentPetitionText = text;
     c.petition = text;
     document.getElementById('petition-content').innerHTML = `<div class="ai-summary-text" style="font-family:'Courier New',monospace;font-size:0.82rem;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:6px;padding:16px;max-height:400px;overflow-y:auto;white-space:pre-wrap;line-height:1.8;">${text}</div>`;
