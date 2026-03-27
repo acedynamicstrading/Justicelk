@@ -6,8 +6,6 @@ const OFFLINE_PAGE = './index.html';
 
 const PRECACHE_URLS = [
   './index.html',
-  './about.html',
-  './kids.html',
   './minor-protection.html',
   './lawyer-registration.html',
   './manifest.json',
